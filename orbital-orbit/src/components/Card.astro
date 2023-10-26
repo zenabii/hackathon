@@ -2,17 +2,18 @@
 import "../styles/global.css"
 interface Props {
 	name: string;
+	img?: string;
 	body?: string;
 	href?: string;
 	ref?: string;
 }
 
-const { name, body } = Astro.props;
+const { name, body, img } = Astro.props;
 ---
 
 <li class="link-card">
 	<a href={name}>
-		
+		{img && <img src={img}>}
 		<h2>
 			{name}
 			<span>&rarr;</span>

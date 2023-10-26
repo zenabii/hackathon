@@ -38,7 +38,7 @@ const { species } = pokedex.data;
 			{
 				species.map((pokemon) => (
 					<li>
-						<Card name={pokemon.name}/>
+						<Card name={pokemon.name} img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}/>
 					</li>
 				))
 			}
