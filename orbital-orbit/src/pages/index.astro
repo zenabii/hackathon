@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import "../styles/global.css";
 const query = `
-  query pokemon_all($name: String) {
+  query {
     species: pokemon_v2_pokemon {
       id
       name
@@ -17,7 +17,6 @@ const response = await fetch(
 		body: JSON.stringify({
 		query: query,
 		variables: {},
-		operationName: "pokemon_all"
 		})
 	}
 );
