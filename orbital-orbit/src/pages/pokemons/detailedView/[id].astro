@@ -1,0 +1,27 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const { id } = Astro.params
+---
+
+<Layout title="Welcome to Astro.">
+	<main>
+    <div class="pokemon-container">
+      <h1> Pokemon: #{id} </h1>
+      <img src=`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`/>
+    </div>
+    
+	</main>
+</Layout>
+
+<style>
+  .pokemon-container {
+    display: flex;
+    justify-content: center;
+    max-width: 256px;
+    margin: auto;
+  }
+
+  img {
+    width: 100%;
+  }
+</style>
