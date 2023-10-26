@@ -1,7 +1,6 @@
 ---
 import "../styles/global.css"
 interface Props {
-	id: string;
 	name: string;
 	img?: string;
 	body?: string;
@@ -9,11 +8,11 @@ interface Props {
 	ref?: string;
 }
 
-const { id, name, body, img } = Astro.props;
+const { name, body, img } = Astro.props;
 ---
 
 <li class="link-card">
-	<a href={id}>
+	<a href={name}>
 		
 		{img && <img src={img} alt="test img" width="100px"/>}
 		<h2>
