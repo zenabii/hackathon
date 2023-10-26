@@ -4,9 +4,10 @@ import Card from "../components/Card.astro";
 import "../styles/global.css";
 const query = `
   query {
-    species: pokemon_v2_pokemon {
+    species: pokemon_v2_pokemon(limit: 10) {
       id
       name
+	  pokemon_v2_pokemonsprites { sprites }
     }
   }
 `
@@ -38,7 +39,7 @@ const { species } = pokedex.data;
 			{
 				species.map((item) => (
 					<li>
-						<Card name={item.name} />
+						<Card name={item.name} sprites={item.pokemon_v2_pokemonsprites} />
 					</li>
 				))
 			}
