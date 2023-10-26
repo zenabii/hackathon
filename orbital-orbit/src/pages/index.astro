@@ -2,12 +2,14 @@
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import "../styles/global.css";
-import { ViewTransitions } from 'astro:transitions';
 const query = `
   query pokemon_all($name: String) {
-    species: pokemon_v2_pokemon {
+    species: pokemon_v2_pokemon(limit: 50) {
       id
       name
+	  pokemon_v2_pokemonsprites {
+		sprites
+	  }
     }
   }
 `
@@ -18,7 +20,6 @@ const response = await fetch(
 		body: JSON.stringify({
 		query: query,
 		variables: {},
-		operationName: "pokemon_all"
 		})
 	}
 );
@@ -28,20 +29,16 @@ const { species } = pokedex.data;
 ---
 
 <Layout title="Team 1">
-	<ViewTransitions />
 	<main>
 		<h1>Team 1</h1>
 		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br
-			/>
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message
-			above.
+			Pokemons ftw
 		</p>
 		<ul role="list" class="link-card-grid">
 			{
-				species.map((item) => (
+				species.map((pokemon) => (
 					<li>
-						<Card name={item.name} />
+						<Card name={pokemon.name}/>
 					</li>
 				))
 			}
