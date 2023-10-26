@@ -3,7 +3,7 @@ import "../styles/global.css"
 interface Props {
 	id: string;
 	name: string;
-	img: string;
+	img?: string;
 	body?: string;
 	href?: string;
 	ref?: string;
@@ -15,7 +15,7 @@ const { id, name, body, img } = Astro.props;
 <li class="link-card">
 	<a href={id}>
 		
-		<img src={img} alt="test img" width="100px"/>
+		{img && <img src={img} alt="test img" width="100px"/>}
 		<h2>
 			{name}
 			<span>&rarr;</span>
