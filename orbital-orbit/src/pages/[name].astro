@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import getStatsById from "../hooks/getStats.js"
 const { name } = Astro.params
 
 const query = `
@@ -24,6 +25,8 @@ const response = await fetch(
 );
 const pokedex = await response.json();
 const pokemon = pokedex.data.species[0];
+
+const moves = await getStatsById(pokemon.id)
 ---
 
 <Layout title={pokemon.name}>
@@ -31,6 +34,11 @@ const pokemon = pokedex.data.species[0];
     <div class="pokemon-container">
       <h1> Pokemon: #{pokemon.id} - {pokemon.name} </h1>
       <img src=`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`/>
+      <ul class="move-list">
+        {moves.map((move) => {
+          return (<li> {move.pokemon_v2_stat.name}: {move.base_stat} </li>)
+        })}
+      </ul>
     </div>
 	</main>
 </Layout>
@@ -58,5 +66,9 @@ const pokemon = pokedex.data.species[0];
 
   img {
     width: 100%;
+  }
+
+  .move-list {
+    list-style: none;
   }
 </style>
