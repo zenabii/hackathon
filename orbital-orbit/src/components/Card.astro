@@ -4,8 +4,8 @@ interface Props {
 	id: string;
 	name: string;
 	img: string;
-	body: string;
-	href: string;
+	body?: string;
+	href?: string;
 }
 
 const { id, name, body, img } = Astro.props;
