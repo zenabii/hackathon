@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import getStatsById from "../hooks/getStats.js"
+import { fade, slide } from 'astro:transitions';
 const { name } = Astro.params
 
 const query = `
@@ -34,7 +35,7 @@ const moves = await getStatsById(pokemon.id)
     <div class="pokemon-container">
       <h1> Pokemon: #{pokemon.id} - {pokemon.name} </h1>
       <img src=`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`/>
-      <ul class="move-list" transition:animate="slide">
+      <ul class="move-list" transition:animate={slide({ duration: '1s' })}>
         {moves.map((move) => {
           return (<li class="moves"> {move.pokemon_v2_stat.name}: {move.base_stat} </li>)
         })}
