@@ -2,7 +2,6 @@
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import "../styles/global.css";
-import { ViewTransitions } from 'astro:transitions';
 const query = `
   query pokemon_all($name: String) {
     species: pokemon_v2_pokemon {
@@ -28,7 +27,6 @@ const { species } = pokedex.data;
 ---
 
 <Layout title="Team 1">
-	<ViewTransitions />
 	<main>
 		<h1>Team 1</h1>
 		<p class="instructions">
