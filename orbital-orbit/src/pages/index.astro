@@ -1,10 +1,19 @@
 ---
-
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
-import "../styles/global.css"
-const data = [{id: "1", name: "Charizard",img:"https://images.unsplash.com/photo-1640271443625-3276ed8f62b5?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",},{id: "1", name: "Charizard",img:"https://images.unsplash.com/photo-1640271443625-3276ed8f62b5?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",}]
-
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import "../styles/global.css";
+const data = [
+	{
+		id: "1",
+		name: "Charizard",
+		img: "https://images.unsplash.com/photo-1640271443625-3276ed8f62b5?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+	},
+	{
+		id: "2",
+		name: "Charizard",
+		img: "https://images.unsplash.com/photo-1640271443625-3276ed8f62b5?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+	},
+];
 ---
 
 <Layout title="Team 1">
@@ -39,24 +48,19 @@ const data = [{id: "1", name: "Charizard",img:"https://images.unsplash.com/photo
 		</svg>
 		<h1>Team 1</h1>
 		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
+			To get started, open the directory <code>src/pages</code> in your project.<br
+			/>
+			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message
+			above.
 		</p>
 		<ul role="list" class="link-card-grid">
-			<Card
-		  	id="1"
-				href="https://docs.astro.build/"
-				img="https://images.unsplash.com/photo-1640271443625-3276ed8f62b5?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-				name="Charizard"
-				body="Meow"
-			/>
-			<Card
-			id="1"
-			  href="https://docs.astro.build/"
-			  img="https://images.unsplash.com/photo-1640271443625-3276ed8f62b5?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-			  name="Charizard"
-			  body="Meow"
-		  />
+			{
+				data.map((item) => (
+					<li>
+						<Card id={item.id} name={item.name} img={item.img} />
+					</li>
+				))
+			}
 		</ul>
 	</main>
 </Layout>
